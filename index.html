@@ -13,14 +13,12 @@
       overflow: hidden;
       background: black;
     }
-    /* Canvas bintang selalu di belakang */
     canvas {
       position: fixed;
       top: 0;
       left: 0;
       z-index: -1;
     }
-    /* Intro */
     #intro {
       background: pink;
       color: white;
@@ -40,7 +38,6 @@
       cursor: pointer;
       margin: 20px;
     }
-    /* Cerpen */
     #cerpen {
       display: none;
       color: white;
@@ -53,17 +50,15 @@
     }
     .typing {
       white-space: pre-wrap;
-      line-height: 1.4em; /* spasi paragraf lebih rapat */
+      line-height: 1.4em;
       font-size: 1.1em;
     }
   </style>
 </head>
 <body>
 
-  <!-- Background bintang -->
   <canvas id="stars"></canvas>
 
-  <!-- Intro -->
   <div id="intro">
     <h1 id="introLine1">Untuk Alifia Azahra Nabila</h1>
     <p id="introLine2">Aku mau kamu klik hati ini</p>
@@ -72,21 +67,18 @@
     <div id="heart2" class="heart" style="display:none;">❤️‍🩹</div>
   </div>
 
-  <!-- Cerpen -->
   <div id="cerpen">
     <div class="typing" id="typingText"></div>
     <audio id="bgMusic" src="lagu.mp3"></audio>
   </div>
 
   <script>
-    // Intro logic
     const heart1 = document.getElementById("heart1");
     const heart2 = document.getElementById("heart2");
     const wrongText = document.getElementById("wrongText");
     const intro = document.getElementById("intro");
     const cerpen = document.getElementById("cerpen");
     const music = document.getElementById("bgMusic");
-
     const introLine1 = document.getElementById("introLine1");
     const introLine2 = document.getElementById("introLine2");
 
@@ -105,100 +97,149 @@
       music.play();
     });
 
-    // Cerpen lengkap
-    const text = `“Alifia Azahra Nabila”
+    const text = `
+Judul: “Alifia Azahra Nabila”
 ---
-Ngomongin first impression ketemu Alifia Azahra Nabila, gua masih inget waktu itu gua masuk shift malem. 
+Ngomongin first impression ketemu Alifia Azahra Nabila, aku masih ingat saat itu aku masuk shift malam.
 ---
-Seperti biasa, begitu buka pintu toko, gua secara ga langsung selalu nengok ke arah kasir buat sekedar melihat temen gua yang shift siang.
+Seperti biasa, begitu buka pintu toko, aku secara ga langsung selalu melihat ke arah kasir untuk sekedar menyapa teman yang lain.
 ---
-Tapi waktu itu ada yg beda, dari balik kasir ada seonggok manusia yang ga gua kenalin muka nya, dan sekilas dalam benak gua “owh perbantuan mungkin😮”.
+Tapi waktu itu ada yg beda, dari balik kasir ada seonggok manusia yang tidak ku kenali wajah nya, dan sekilas dalam benakku “owh perbantuan mungkin😮”.
 ---
-Singkat cerita gua udh siap buat pergantian shift, dan dari sedikit yang gua perhatiin, si “anak baru” ini tampangnya kayak bocah, baby face mungkin sebutannya.
+Singkat cerita aku udh siap buat pergantian shift, dan dari sedikit yang ku perhatiin, si “anak baru” ini tampangnya kayak bocah, baby face mungkin sebutannya.
 ---
-Ga perlu waktu lama buat gua tau nama dia siapa. Alifia Azahra Nabila
+Ga perlu waktu lama untukku tau namanya...
 ---
-Satu hal yg gua salut di awal itu ketika gua perhatiin, dia cukup cepet buat bergaul sama anak toko, ga sungkan bertanya duluan, karna banyak anak baru terutama baru lulus yang masih jaim ketika baru kenal lingkungan baru.
+Alifia Azahra Nabila
 ---
-Lambat laun waktu berjalan, Alifia mulai makin akrab sama sekitarnya, dan perlu gua akuin emg dia punya aura tersendiri yang bikin orang sekitarnya mudah akrab sama dia.
+Satu hal yg aku salut di awal itu ketika ku perhatiin, dia cukup cepet buat bergaul dengan anak toko,bahkan ga sungkan bertanya duluan, karna banyak anak baru terutama baru lulus yang masih jaim ketika baru kenal lingkungan baru.
 ---
-Mungkin karna sifat yang dia kasih keorang lain, kesan nya selalu ceria, aktif, basa basi nya pun ada aja, mungkin bisa dibilang Genit?🤔 Ganjen?😑 Ntah lah lgi pula toh namanya juga perempuan😏.
+Lambat laun waktu berjalan, kamu Alifia mulai makin akrab sama sekitar, dan perlu aku akui memang kamu punya aura tersendiri yang bikin orang sekitarmu mudah akrab.
 ---
-Hingga dari sikapnya itu, ga sedikit orang yang mulai “nge deketin”, menurut gua itu wajar, melihat dari mereka yang ngedeketin udah di usia yang perlu mempertanyakan soal hubungan.
+Mungkin karna sifatmu keorang lain, kesanmu yang selalu ceria, aktif, basa basi nya pun ada aja, mungkin bisa dibilang Genit?🤔 Ganjen?😑 Ntah lah lgi pula toh namanya juga perempuan😏.
 ---
-Ada yang nawarin diri antar jemput lah, beliin sarapan setiap pagi, bahkan ngasih kue ulang tahun yang kesan nya anonimus 😬.
+Hingga dari sikapnya itu, ga sedikit orang yang mulai “nge deketin”, menurutku itu wajar, melihat dari mereka yang ngedeketin udah di usia yang perlu mempertanyakan soal hubungan.
 ---
-Gua masih inget dia pernah punya pertanyaan, lebih tepatnya heran kenapa mereka seperti itu, padahal dia anggap mereka sebagai “Abang”.
+Ada yang nawarin diri antar jemput, beliin sarapan setiap pagi, bahkan ngasih kue ulang tahun dengan kesan anonimus 😬.
 ---
-Dan ya gua cuma bisa ngejelasin sekali lagi kalo itu wajar🙂‍↕️, karna di umur mereka yang bisa dibilang udah waktunya mikir soal hubungan, mungkin udah sulit buat dapat interaksi sama lawan jenis sampai akrab seperti itu.
+Aku masih ingat kamu pernah punya pertanyaan, lebih tepatnya heran kenapa mereka seperti itu, padahal kamu anggap mereka sebagai “Abang”🤔.
 ---
-Sehingga ketika dapat perlakuan dari lu “Alifia Azahra Nabila” yang orangnya memang mudah bergaul, mereka anggap itu hal yang tak biasa dan spesial.
+Dan ya aku hanya bisa ngejelasin sekali lagi kalo itu wajar🙂‍↕️, karna di umur mereka yang bisa dibilang udah waktunya mikir soal hubungan, mungkin sudah sulit untuk dapat interaksi dengan lawan jenis sampai akrab seperti itu.
 ---
-Bahkan bagi gua sendiri pun, ke “Ganjenan” lu itu cukup terasa buat gua😮‍💨, yah mungkin karna guanya juga sebelumnya gapernah ketemu ama yang begitu kali ya, jadi gua ngerasa kayak “Apanih maksudnya”🙄. Tapi ya selama itu bukan hal yang negatif gua ga permasalahin juga😪.
+Sehingga ketika dapat perlakuan dari kamu yang orangnya memang mudah bergaul, mereka anggap itu hal yang tak biasa dan spesial.
 ---
-Sampai ketika pernah gua ngerasa lu tiba tiba berubah total😌,sikap lu ke gua ntah kerasa kaya jauhin gua, ga liat ada gua, ya intinya beda banget lah, dari Alifia yang ceria, suka nge gombal absurd itu tiba tiba berubah jdi kaya orang ga kenal😔.
+Bahkan bagiku pun, ke “Ganjenan” itu cukup terasa😮‍💨, yah mungkin karna akupun juga sebelumnya gapernah ketemu sama yang seperti itu mungkin ya, jadi aku merasa kayak....
 ---
-Kalau memang dari awal sikapnya cuek atau bagaimana pasti ga akan kelihatan bedanya🧐, tapi karna dari awal lu bukan orang yang cuek, dingin dll, begitu ada perubahan sikap, semuanya langsung terasa bedanya.
+“Apanih maksudnya”🙄.
 ---
-Gua masih inget selama 2 minggu gua berasa didiemin☹️, anak toko yang lain tetep normal ama gua biasa aja tpi lu kayak diemin gua. Gua selalu ngecek lagi apakah ada kata kata gua yang salah, atau sikap gua yang ga lu suka atau apapun itu🙄.
+Tapi ya selama itu bukan hal yang negatif aku ga permasalahin juga😪.
 ---
-Dan emang gua akuin gua gapernah nanya soal itu, karna gua juga gamau ke GR an😌. Tapi gua yakin emg waktu itu lu lgi ga baik baik aja, itu yg gua rasain.
+Sampai suatu hari aku merasa kamu tiba tiba berubah total😌,sikapmu terasa seperti asing, ga negur, ya intinya beda banget deh
 ---
-Sampe ketemu hari SO Grand, semuanya berjalan kayak biasa, lu pun juga masih dengan sikap yang sama, hingga ketika istirahat sejenak, gua inget ntah ada angin apa lu negur gua lagi😮, lu nawarin gua apa gua mau bikin mie juga apa ngga🥲.
+dari Alifia yang ceria, suka nge gombal absurd itu tiba tiba berubah jdi kaya orang ga kenal😔...
 ---
-Dan disitu gua mulai ngerasa lega😩, tapi tetep gua ga pertanyain soal kenapa sebelumnya sikap lu seakan berubah. Gua ga minta lu buat pertahanin sikap awal lu itu buat gua, hanya saja dari perubahan itu gua jdi selalu ngerasa kalo ada yang salah dari gua, ntah apa itu.
+Kalau memang dari awal sikapmu cuek atau bagaimana pasti ga akan kelihatan bedanya🧐
 ---
-Singkat cerita semua nya kembali normal 😇, walaupun gua ngerasa intensitas komunikasi lu ama gua sedikit berkurang, yahh gimanapun juga gua ga bisa permasalahin soal itu, toh gua ama yang lain juga sama ko begitu😅.
+tapi karna dari awal kammu bukan orang yang cuek, dingin dll, begitu ada perubahan sikap, semuanya langsung terasa bedanya.
 ---
-Sampai akhirnya karna ada satu hal gua mutusin buat resign, di satu sisi memang karna kebijakan toko yang buat gua ga nyaman, disisi lain gua tau kalau temen gua yang tersisa pun akan resign🥲.
+Aku masih ingat selama 2 minggu aku merasa tak dihiraukan☹️, interaksi anak toko yang lain denganku tetap normal biasa aja tapi kamu kayak menjauh.
 ---
-Gua paling ga suka ditinggal, jadi akhirnya gua resign duluan, mau disuruh tunggu THR kek apa kek, gua mau keluar.
+Aku selalu bertanya tanya apakah ada kata kataku yang salah, atau sikapku yang tidak kamu suka, ntah apapun itu🙄.
 ---
-Dan yaa, akhirnya satu persatu juga resign, semua jalanin hidup masing masing, cuma satu yang gua harap.
+Dan emang aku akui aku gapernah nanya soal itu...
+---
+Karna akupun tak mau ke GR an😌. Tapi aku yakin memang waktu itu kamu sedang tidak baik baik aja...
+---
+Itu yg aku rasain...
+---
+Sampe ketemu hari SO Grand, semuanya berjalan seperti biasa, kamu pun juga masih dengan sikap yang sama.
+---
+Hingga ketika istirahat sejenak, aku ingat ntah ada angin apa kamu menegurku lagi😮....
+---
+Kamu nawarin perihal apa aku juga mau untuk dibuatkan mie atau tidak🥲.
+---
+Dan disitu aku mulai ngerasa lega😩...
+---
+Tapi tetep aku ga pertanyain soal kenapa sebelumnya sikapmu seakan berubah. Aku ga minta kamu buat pertahanin sikap awal itu untukku, hanya saja dari perubahan itu aku jdi selalu ngerasa kalo ada yang salah dariku, ntah apa itu.
+---
+Singkat cerita semua nya kembali normal 😇, walaupun aku rasa intensitas komunikasi kita sedikit berkurang...
+---
+Yahh gimanapun juga gua ga bisa permasalahin soal itu, toh aku dengan yang lain pun seperti itu😅.
+---
+Sampai akhirnya karna ada satu hal, aku memutuskan untuk resign. Di satu sisi memang karna kebijakan toko yang buatku ga nyaman, disisi lain aku tau kalau temanku yang tersisa pun akan resign🥲.
+---
+Aku paling benci ditinggal, hingga akhirnya memutuskan resign duluan, mau disuruh tunggu THR kek apa kek, aku tetap mau keluar saat itu juga.
+---
+Dan yaa, akhirnya satu persatu juga resign, semua jalanin hidup masing masing.
+---
+Cuma satu yang ku harap...
 ---
 Semoga semua temen gua bisa capai apa yang diinginkan🥹
 ---
-Dan buat lu Alifia, begitu gua tau lu keterima kuliah di Kalimantan sana, gua harap lu bisa jaga diri, ga gampang ketipu sama orang lain terutama laki laki, melihat sikap lu yang emg mudah bergaul dan bikin orang lain seneng sama lu dan dari pengalaman lu di toko soal beberapa laki laki yang obses sama lu. 
+Dan untuk kamu Alifia, begitu aku tau berita kamu keterima kuliah di Kalimantan sana, aku harap kamu bisa jaga diri, ga gampang ketipu sama orang lain terutama laki laki, melihat sikapmu yang memang mudah bergaul dan buat orang lain senang dan dari pengalamanmu di toko soal beberapa laki laki yang terobsesi
 ---
-Karna waktu masih di toko, gua sempet mikir dan khawatir “nih anak bisa jaga diri ga ya😓” takutnya ketemu orang yang terbuai ama sikap lu, obses sama lu, tapi begitu ga dapet apa yang dia mau, dia ngelakuin hal jahat ama lu.
+Karna waktu masih di toko, aku sempat terfikir dan khawatir “nih anak bisa jaga diri ga ya😓”
 ---
-Tapi gua yakin lu ga bego juga pasti, lambat laun juga lu bisa bedain mana yang “Kadal” mana yang kaga.
+Takutnya ketemu orang yang terbuai dengan sikapmu, obses terhadapmu, tapi begitu tidak dapat apa yang dia mau, dia ngelakuin hal jahat ke kamu.
 ---
-Dan ya, sekarang lu udah mau wisuda, selamat buat lu lip, semoga kedepan nya lu selalu dapet yang terbaik buat lu, tapi lu harus inget, kadang yang terbaik belum tentu yang lu mau.
+Tapi aku yakin kamu ga sebodoh itu pasti, lambat laun juga kamu bisa bedain mana yang “Kadal” mana yang tidak.
 ---
-Tetep jadi diri sendiri, ga perlu pura pura lagi, terima gimana hidup lu, ubah apa yang bisa diubah, syukuri apa yang dikasih.
-
+Dan ya, sekarang kamu udah mau wisuda, selamat untukmu Alifia, semoga kedepan nya kamu selalu mendapat yang terbaik,
+---
+Tapi kamu harus ingat....
+---
+Kadang yang terbaik belum tentu seperi yang kita inginkan...
+---
+Tetaplah jadi diri sendiri, tak perlu pura pura lagi, terima gimana hidup berjalan, ubah apa yang bisa diubah, syukuri apa yang diterima....
+---
 Selesai………
-
-Kelanjutan season 2 belum ada pengumuman nya.
-
-Wardian Maulana Yusup `;
+---
+Kelanjutan season 2 belum ada pengumuman lagi....
+---
+by Wardian Maulana Yusup`;
 
     const typingText = document.getElementById("typingText");
     let i = 0;
-    let speed = 50; // kecepatan tik nyaman
+    const speed = 60;
 
     function startTyping() {
       if (i < text.length) {
-        if (text.substring(i,i+3) === "---") {
-          typingText.innerHTML += "\n\n"; // paragraf rapat
+        if (text.substring(i, i+3) === "---") {
+          typingText.innerHTML += "\n\n";
           i += 3;
         } else {
           typingText.innerHTML += text.charAt(i);
           i++;
         }
-        typingText.scrollTop = typingText.scrollHeight; // auto scroll
+        typingText.scrollTop = typingText.scrollHeight;
         setTimeout(startTyping, speed);
       }
     }
 
-    // Background bintang
+    // Bintang background
     const canvas = document.getElementById("stars");
     const ctx = canvas.getContext("2d");
     let stars = [];
+    function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
 
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+    for (let i=0;i<200;i++){
+      stars.push({x: Math.random()*canvas.width, y: Math.random()*canvas.height, radius: Math.random()*1.5, speed: Math.random()*0.5});
     }
-    window.addEventListener("
+    function drawStars(){
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      ctx.fillStyle="white";
+      stars.forEach(star=>{
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.radius, 0, Math.PI*2);
+        ctx.fill();
+        star.y += star.speed;
+        if(star.y>canvas.height) star.y=0;
+      });
+      requestAnimationFrame(drawStars);
+    }
+    drawStars();
+  </script>
+</body>
+</html>
