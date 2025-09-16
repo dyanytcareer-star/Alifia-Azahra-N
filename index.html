@@ -5,43 +5,31 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Untuk Alifia</title>
 <style>
-  body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    font-family: 'Courier New', monospace;
-    overflow: hidden;
-    background: black;
-    color: white;
-  }
-  canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: -1;
-  }
-  #intro {
-    background: pink;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    text-align: center;
-  }
-  #intro h1 { font-size: 1.8em; margin-bottom: 20px; }
-  .heart { font-size: 4em; cursor: pointer; margin: 20px; }
-  #cerpen {
-    display: none;
-    height: 100%;
-    width: 100%;
-    overflow-y: auto;
-    padding: 20px;
-    box-sizing: border-box;
-    position: relative;
-  }
-  .typing { white-space: pre-wrap; line-height: 1.4em; font-size: 1.1em; }
+body, html {
+  margin: 0; padding: 0; height: 100%; font-family: 'Courier New', monospace; overflow: hidden; background: black; color: white;
+}
+canvas#stars { position: fixed; top:0; left:0; width:100%; height:100%; z-index:-1; }
+
+#intro {
+  background: pink;
+  height:100%; width:100%; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;
+}
+#intro h1 { font-size: 2em; margin-bottom: 10px; }
+.heart { font-size: 4em; margin:15px; cursor:pointer; }
+#wrongText { display:none; margin-top:10px; }
+
+#cerpen {
+  display:none; padding:20px; box-sizing:border-box; height:100%; overflow-y:auto; line-height:1.4em; font-size:1.1em; background:transparent;
+}
+.typing { white-space: pre-wrap; }
+
+#music-btn {
+  position:fixed; bottom:15px; right:15px; background: rgba(255,255,255,0.1); border:1px solid white; border-radius:50%;
+  width:50px; height:50px; display:flex; justify-content:center; align-items:center; cursor:pointer; font-size:22px; z-index:10;
+}
+#music-btn:hover { background: rgba(255,255,255,0.2); }
+
+audio { display:none; }
 </style>
 </head>
 <body>
@@ -49,45 +37,48 @@
 <canvas id="stars"></canvas>
 
 <div id="intro">
-  <h1 id="introLine1">Untuk Alifia Azahra Nabila</h1>
-  <p id="introLine2">Aku mau kamu klik hati ini</p>
+  <h1>Untuk Alifia Azahra Nabila</h1>
+  <p>Aku mau kamu klik hati ini</p>
   <div id="heart1" class="heart">💔</div>
-  <p id="wrongText" style="display:none;">Eh salah, maksudku yang ini</p>
+  <p id="wrongText">Eh salah, maksudku yang ini</p>
   <div id="heart2" class="heart" style="display:none;">❤️‍🩹</div>
 </div>
 
 <div id="cerpen">
   <div class="typing" id="typingText"></div>
-  <audio id="bgMusic" src="lagu.mp3"></audio>
+  <audio id="bgMusic" src="lagu.mp3" autoplay loop></audio>
 </div>
 
+<div id="music-btn">▶️</div>
+
 <script>
-  const heart1 = document.getElementById("heart1");
-  const heart2 = document.getElementById("heart2");
-  const wrongText = document.getElementById("wrongText");
-  const intro = document.getElementById("intro");
-  const cerpen = document.getElementById("cerpen");
-  const music = document.getElementById("bgMusic");
-  const introLine1 = document.getElementById("introLine1");
-  const introLine2 = document.getElementById("introLine2");
+// Intro logic
+const heart1 = document.getElementById("heart1");
+const heart2 = document.getElementById("heart2");
+const wrongText = document.getElementById("wrongText");
+const intro = document.getElementById("intro");
+const cerpen = document.getElementById("cerpen");
+const music = document.getElementById("bgMusic");
+const typingText = document.getElementById("typingText");
 
-  heart1.addEventListener("click", () => {
-    introLine1.style.display = "none";
-    introLine2.style.display = "none";
-    wrongText.style.display = "block";
-    heart2.style.display = "block";
-    heart1.style.display = "none";
-  });
+heart1.addEventListener("click", ()=>{
+  // sembunyikan 2 kalimat intro
+  intro.querySelector("h1").style.display="none";
+  intro.querySelector("p").style.display="none";
+  wrongText.style.display="block";
+  heart1.style.display="none";
+  heart2.style.display="block";
+});
 
-  heart2.addEventListener("click", () => {
-    intro.style.display = "none";
-    cerpen.style.display = "block";
-    startTyping();
-    music.play();
-  });
+heart2.addEventListener("click", ()=>{
+  intro.style.display="none";
+  cerpen.style.display="block";
+  startTyping();
+  music.play();
+});
 
-  const text = `
-Judul: “Alifia Azahra Nabila”
+// Cerita versi revisi
+const text = `Judul: “Alifia Azahra Nabila”
 ---
 Ngomongin first impression ketemu Alifia Azahra Nabila, aku masih ingat saat itu aku masuk shift malam.
 ---
@@ -187,49 +178,54 @@ Kelanjutan season 2 belum ada pengumuman lagi....
 ---
 by Wardian Maulana Yusup`;
 
-  const typingText = document.getElementById("typingText");
-  let i = 0;
-  const speed = 60;
-
-  function startTyping() {
-    if(i<text.length){
-      if(text.substring(i,i+3)==="---"){
-        typingText.innerHTML += "\n\n";
-        i+=3;
-      }else{
-        typingText.innerHTML += text.charAt(i);
-        i++;
-      }
-      typingText.scrollTop = typingText.scrollHeight;
-      setTimeout(startTyping,speed);
+let i=0;
+function startTyping(){
+  if(i<text.length){
+    if(text.substring(i,i+3)==="---"){
+      typingText.innerHTML += "\n\n";
+      i+=3;
+    }else{
+      typingText.innerHTML += text.charAt(i);
+      i++;
     }
+    typingText.scrollTop = typingText.scrollHeight;
+    setTimeout(startTyping,60);
   }
+}
 
-  // Bintang background
-  const canvas = document.getElementById("stars");
-  const ctx = canvas.getContext("2d");
-  let stars = [];
-  function resizeCanvas(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}
-  window.addEventListener("resize", resizeCanvas);
-  resizeCanvas();
+// Musik kontrol
+const musicBtn = document.getElementById("music-btn");
+musicBtn.addEventListener("click", ()=>{
+  if(music.paused){ music.play(); musicBtn.textContent="⏸️"; }
+  else{ music.pause(); musicBtn.textContent="▶️"; }
+});
+document.addEventListener("click", ()=>{ if(music.paused){ music.play(); musicBtn.textContent="⏸️"; } }, {once:true});
 
-  for(let i=0;i<200;i++){
-    stars.push({x:Math.random()*canvas.width, y:Math.random()*canvas.height, radius:Math.random()*1.5, speed:Math.random()*0.5});
-  }
+// Bintang random
+const canvas = document.getElementById("stars");
+const ctx = canvas.getContext("2d");
+let starsArr = [];
+function resizeCanvas(){ canvas.width=window.innerWidth; canvas.height=window.innerHeight; }
+window.addEventListener("resize",resizeCanvas);
+resizeCanvas();
 
-  function drawStars(){
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    ctx.fillStyle="white";
-    stars.forEach(star=>{
-      ctx.beginPath();
-      ctx.arc(star.x, star.y, star.radius,0,Math.PI*2);
-      ctx.fill();
-      star.y+=star.speed;
-      if(star.y>canvas.height) star.y=0;
-    });
-    requestAnimationFrame(drawStars);
-  }
-  drawStars();
+for(let s=0;s<200;s++){
+  starsArr.push({x:Math.random()*canvas.width, y:Math.random()*canvas.height, r:Math.random()*1.5, speed:Math.random()*0.5});
+}
+
+function drawStars(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle="white";
+  starsArr.forEach(star=>{
+    ctx.beginPath();
+    ctx.arc(star.x, star.y, star.r,0,Math.PI*2);
+    ctx.fill();
+    star.y+=star.speed;
+    if(star.y>canvas.height) star.y=0;
+  });
+  requestAnimationFrame(drawStars);
+}
+drawStars();
 </script>
 </body>
 </html>
